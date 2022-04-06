@@ -24,6 +24,8 @@ class _ParkingState extends State<Parking> {
   @override
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
@@ -32,14 +34,14 @@ class _ParkingState extends State<Parking> {
       body: Stack(
         children: [
           Container(
-            height:size.height*1 ,
-            width: size.width,
+            height:height,
+            width: width,
             decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
                     'assets/images/p1.jpeg',
                   ),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 )),
           ),
           PositionedDirectional(
