@@ -170,7 +170,7 @@ Widget buildChatItem(
                                 child: Text(
                                   '${city}',
                                   style: TextStyle(
-                                      fontSize: 17.0,
+                                      fontSize: 16.0,
                                       fontWeight: FontWeight.bold),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
