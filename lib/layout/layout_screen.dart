@@ -68,7 +68,7 @@ StreamSubscription _streamSubscription;
       }else{
         status=showToast(
             text: 'Not Connected',
-            state: ToastStates.SUCCESS);;
+            state: ToastStates.SUCCESS);
       }
       setState((){});
     });

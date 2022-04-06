@@ -23,6 +23,7 @@ class _ParkingState extends State<Parking> {
 
   @override
   Widget build(BuildContext context) {
+    Size size=MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
@@ -55,8 +56,8 @@ class _ParkingState extends State<Parking> {
           if(c1==true)
             //Car1
           PositionedDirectional(
-              top: 220,
-              start: 110,
+              top:size.height*.265,
+              start: size.width*.28,
               child: Transform.rotate(
                 angle: 0 * pi / 180,
                 child: Container(
@@ -71,8 +72,8 @@ class _ParkingState extends State<Parking> {
                 ),
               )),
           PositionedDirectional(
-              top: 240,
-              start: 135,
+            top:size.height*.286,
+            start: size.width*.35,
               child: Transform.rotate(
                 angle: 45 * pi / 180,
                 child:InkWell(
@@ -91,8 +92,8 @@ class _ParkingState extends State<Parking> {
           if(c2==false)
           //Car2
           PositionedDirectional(
-              top: 305,
-              start: 110,
+              top:size.height*.36,
+              start: size.width*.30,
               child: Transform.rotate(
                 angle: 90 * pi / 180,
                 child: Container(
@@ -107,8 +108,8 @@ class _ParkingState extends State<Parking> {
                 ),
               )),
           PositionedDirectional(
-              top: 335,
-             start: 135,
+            top:size.height*.39,
+            start: size.width*.36,
             child: Transform.rotate(
               angle: 45 * pi / 180,
               child:InkWell(
@@ -127,8 +128,8 @@ class _ParkingState extends State<Parking> {
           if(c3==false)
           //Car3
           PositionedDirectional(
-              bottom: 239,
-              start: 98,
+              bottom:size.height*.286,
+              start: size.width*.247,
               child: Transform.rotate(
                 angle: 90 * pi / 180,
                 child: Container(
@@ -143,8 +144,8 @@ class _ParkingState extends State<Parking> {
                 ),
               )),
           PositionedDirectional(
-            bottom: 260,
-            start: 130,
+            bottom:size.height*.32,
+            start: size.width*.34,
             child: Transform.rotate(
               angle: 45 * pi / 180,
               child:InkWell(
@@ -164,8 +165,8 @@ class _ParkingState extends State<Parking> {
           if(c4==false)
             //Car4
           PositionedDirectional(
-              bottom: 210,
-              end: 107,
+              bottom:size.height*.256,
+              end: size.width*.28,
               child: Transform.rotate(
                 angle: 270 * pi / 180,
                 child: Container(
@@ -180,8 +181,8 @@ class _ParkingState extends State<Parking> {
                 ),
               )),
           PositionedDirectional(
-            bottom: 215,
-            end: 130,
+            bottom:size.height*.26,
+            end: size.width*.33,
             child: Transform.rotate(
               angle: 135 * pi / 180,
               child:InkWell(
@@ -200,8 +201,8 @@ class _ParkingState extends State<Parking> {
           if(c5==false)
             //Car5
           PositionedDirectional(
-              top: 258,
-              end: 102,
+              top:size.height*.31,
+              end: size.width*.27,
               child: Transform.rotate(
                 angle: 270 * pi / 180,
                 child: Container(
@@ -216,8 +217,8 @@ class _ParkingState extends State<Parking> {
                 ),
               )),
           PositionedDirectional(
-            top: 275,
-            end: 135,
+            top:size.height*.33,
+            end: size.width*.35,
             child: Transform.rotate(
               angle: 135 * pi / 180,
               child:InkWell(
@@ -236,8 +237,8 @@ class _ParkingState extends State<Parking> {
           if(c6==false)
             //Car6
           PositionedDirectional(
-              bottom: 167,
-              start: 92,
+              bottom:size.height*.20,
+              start: size.width*.23,
               child: Transform.rotate(
                 angle: 0 * pi / 180,
                 child: Container(
@@ -252,8 +253,8 @@ class _ParkingState extends State<Parking> {
                 ),
               )),
           PositionedDirectional(
-            bottom: 175,
-            start: 130,
+            bottom:size.height*.21,
+            start: size.width*.34,
             child: Transform.rotate(
               angle: 45 * pi / 180,
               child:InkWell(
