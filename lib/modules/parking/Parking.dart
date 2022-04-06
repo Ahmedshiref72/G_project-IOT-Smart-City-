@@ -32,12 +32,14 @@ class _ParkingState extends State<Parking> {
       body: Stack(
         children: [
           Container(
+            height:size.height*1 ,
+            width: size.width,
             decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
                     'assets/images/p1.jpeg',
                   ),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 )),
           ),
           PositionedDirectional(
@@ -56,13 +58,13 @@ class _ParkingState extends State<Parking> {
           if(c1==true)
             //Car1
           PositionedDirectional(
-              top:size.height*.265,
+              top:size.height*.246,
               start: size.width*.28,
               child: Transform.rotate(
                 angle: 0 * pi / 180,
                 child: Container(
-                  width: 100,
-                  height: 120,
+                  width: size.width*.235,
+                  height: size.height*.185,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(

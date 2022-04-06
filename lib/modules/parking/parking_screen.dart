@@ -52,7 +52,7 @@ class ParkingScreen extends StatelessWidget {
                         print('Result: $results');
                       },
                       child: Container(
-                        width: 350,
+                        width: size.width*.9,
                         decoration: BoxDecoration(
                             color: Color.fromARGB(255, 242, 232, 232),
                             borderRadius: BorderRadius.only(
@@ -64,7 +64,7 @@ class ParkingScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding:  EdgeInsets.all(8.0),
                               child: Text(
                                 'Search ...',
                                 style: TextStyle(
