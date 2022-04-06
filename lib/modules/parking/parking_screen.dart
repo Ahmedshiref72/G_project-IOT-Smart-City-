@@ -24,98 +24,103 @@ class ParkingScreen extends StatelessWidget {
     'Paris',
   ];
 
+
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: Column(
-            children: [
-              Container(
+  Widget build(BuildContext context) {
+    Size size=MediaQuery.of(context).size;
+    return Scaffold(
 
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 12,
+      body: Column(
+        children: [
+          Container(
+
+              child: Padding(
+                padding: EdgeInsets.only(left:size.height*.0246,right:size.height*.001 ),
+                child: Row(
+                  children: [
+                   /* SizedBox(
+                      width: 12,
+                    ),*/
+                    InkWell(
+                      onTap: () async {
+                        showSearch(
+                            context: context, delegate: CitySearch());
+
+                        final results = await showSearch(
+                            context: context, delegate: CitySearch());
+
+                        print('Result: $results');
+                      },
+                      child: Container(
+                        width: 350,
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 242, 232, 232),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                              bottomLeft: Radius.circular(10),
+                            )
                         ),
-                        InkWell(
-                          onTap: () async {
-                            showSearch(
-                                context: context, delegate: CitySearch());
-
-                            final results = await showSearch(
-                                context: context, delegate: CitySearch());
-
-                            print('Result: $results');
-                          },
-                          child: Container(
-                            width: 350,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 242, 232, 232),
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20),
-                                  bottomLeft: Radius.circular(10),
-                                )
-                            ),
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Search ...',
-                                    style: TextStyle(
-                                      color: Colors.grey[500],
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w700,
-                                      fontStyle: FontStyle.italic,
-                                    ),
-                                  ),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'Search ...',
+                                style: TextStyle(
+                                  color: Colors.grey[500],
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                  fontStyle: FontStyle.italic,
                                 ),
-                                Spacer(),
-                                Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.search,
-                                        color: Colors.grey[500],
-                                      ),
-                                      onPressed: () async {
-                                        showSearch(
-                                            context: context,
-                                            delegate: CitySearch());
-
-                                        final results = await showSearch(
-                                            context: context,
-                                            delegate: CitySearch());
-
-                                        print('Result: $results');
-                                      },
-                                    )),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )),
-              Expanded(child:
-                  SingleChildScrollView(
-                    child: ListView.separated(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) =>
-                          buildChatItem(cites[index], context, index),
-                      separatorBuilder: (context, index) => SizedBox(
-                        height: 2.0,
-                      ),
-                      itemCount: cites.length,
-                    ),
-                  ),
-              )
+                            Spacer(),
+                            Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.search,
+                                    color: Colors.grey[500],
+                                  ),
+                                  onPressed: () async {
+                                    showSearch(
+                                        context: context,
+                                        delegate: CitySearch());
 
-            ],
+                                    final results = await showSearch(
+                                        context: context,
+                                        delegate: CitySearch());
+
+                                    print('Result: $results');
+                                  },
+                                )),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )),
+          Expanded(child:
+          SingleChildScrollView(
+            child: ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (context, index) =>
+                  buildChatItem(cites[index], context, index),
+              separatorBuilder: (context, index) => SizedBox(
+                height: 2.0,
+              ),
+              itemCount: cites.length,
+            ),
           ),
-      );
+          )
+
+        ],
+      ),
+    );
+  }
 }
 
 Widget buildChatItem(
