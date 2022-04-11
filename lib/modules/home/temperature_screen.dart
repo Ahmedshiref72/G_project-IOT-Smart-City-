@@ -40,7 +40,7 @@ class TemperatureScreen extends StatelessWidget {
                 CustomSliderWidths(progressBarWidth: 5, handlerSize: 10),
               ),
               min: 0,
-              max: 30,
+              max: 100,
               initialValue: temperature,
               onChangeEnd: (_value) => _value,
               innerWidget: (percentage) => Padding(

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_zoom_drawer/config.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -20,7 +22,7 @@ class LayoutScreen extends StatefulWidget {
   @override
   _LayoutScreenState createState() => _LayoutScreenState();
 }
-
+final ZoomDrawerController z = ZoomDrawerController();
 class _LayoutScreenState extends State<LayoutScreen> {
   Color color = ThemeMode.light != null ? HexColor('333739') : Colors.white;
 
@@ -80,53 +82,179 @@ StreamSubscription _streamSubscription;
     return BlocConsumer<ParkingCubit, ParkingStates>(
         listener: (context, state) {
       var model = ParkingCubit.get(context).userModel;
-
+      Size size=MediaQuery.of(context).size;
       emailController.text = model.data.email;
       nameController.text = model.data.username;
     }, builder: (context, state) {
       var cubit = ParkingCubit.get(context);
-      return Scaffold(
-        appBar: AppBar(
-          title: Text('Smart City'),
+      return ZoomDrawer(
+        controller: z,
+        borderRadius: 20,
+        style: DrawerStyle.defaultStyle,
+        showShadow: true,
+        angle: -25.0,
+        drawerShadowsBackgroundColor: Colors.blueGrey,
+        slideWidth: MediaQuery.of(context).size.width *.95,
+        menuScreen: Container(
+          color: Colors.white,
+          child: ListView(
+            children: [
+              DrawerHeader(
+                  decoration: BoxDecoration(color: Colors.blueGrey),
+                  child: InkWell(
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 31,
+                          backgroundColor: Colors.deepPurpleAccent,
+                          child: CircleAvatar(
+                              radius: 30,
+                              backgroundImage:
+                              AssetImage('assets/images/onboard_1.jpg')),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          width: 200,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                  nameController.text,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontFamily: '',
+                                  )),
+                              const SizedBox(
+                                height: 4,
+                              ),
+                              Text(
+                                emailController.text,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontFamily: '',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    onTap: () async{
+                      _hasInternet=await InternetConnectionChecker().hasConnection ;
 
-          elevation: 10,
+                      if (_hasInternet) {
+                        navigateTo(
+                          context,
+                          ProfileScreen(),
+                        );
+                      }
+
+                      else{
+                        showToast(
+                            text: 'Please Check Your Network Connection', state: ToastStates.ERROR
+                        );
+                      }
+                    },
+                  )),
+
+              //   myDivider(),
+              SizedBox(
+                height: 30,
+              ),
+              buildListTile("Main Screen", Icons.home_outlined, () {}),
+              SizedBox(
+                height: 15,
+              ),
+              buildListTile("Profile", Icons.account_box_outlined, () async{
+                _hasInternet=await InternetConnectionChecker().hasConnection ;
+
+                if (_hasInternet) {
+                  navigateTo(
+                    context,
+                    ProfileScreen(),
+                  );
+
+                }
+                else{
+                  showToast(
+                      text: 'Please Check Your Network Connection', state: ToastStates.ERROR
+                  );
+                }
+              }),
+              SizedBox(
+                height: 15,
+              ),
+              buildListTile("Settings", Icons.settings_outlined, () {
+                navigateTo(context, SettingsScreen());
+              }),
+              SizedBox(
+                height: 15,
+              ),
+              myDivider(),
+              SizedBox(
+                height: 15,
+              ),
+              buildListTile("Log out", Icons.logout_outlined, () {
+                signOut(context);
+              }),
+              SizedBox(
+                height: 15,
+              ),
+            ],
+          ),
         ),
-        body: SmartRefresher(
-        child: cubit.bottomScreen[cubit.currentIndex],
+        mainScreen:Scaffold(
+          appBar: AppBar(
+            title: Text('Smart City'),
+            leading: IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                z.toggle();
+              },
+            ),
+            elevation: 10,
+          ),
+          body: SmartRefresher(
+            child: cubit.bottomScreen[cubit.currentIndex],
 
-        onRefresh:() async {
-          await Future.delayed(Duration(microseconds: 500));
-          _refreshController.refreshFailed();
-          //Restart.restartApp();
+            onRefresh:() async {
+              await Future.delayed(Duration(microseconds: 500));
+              _refreshController.refreshFailed();
+//Restart.restartApp();
 
-          _hasInternet=await InternetConnectionChecker().hasConnection ;
-          final color = _hasInternet ? Colors.green :Colors.red;
-          final text = _hasInternet ? 'Network Connection Success': 'Network Connection Failed';
-          result= await Connectivity().checkConnectivity();
+              _hasInternet=await InternetConnectionChecker().hasConnection ;
+              final color = _hasInternet ? Colors.green :Colors.red;
+              final text = _hasInternet ? 'Network Connection Success': 'Network Connection Failed';
+              result= await Connectivity().checkConnectivity();
 
-            if(_hasInternet){
-              ParkingCubit.get(context).getUserData();
-              showToast(
-                  text: text,
-                  state: ToastStates.SUCCESS
-              );
-            }
-            else {
-              showToast(
-                  text: text,
-                  state: ToastStates.SUCCESS
-              );
+              if(_hasInternet){
+                ParkingCubit.get(context).getUserData();
+                showToast(
+                    text: text,
+                    state: ToastStates.SUCCESS
+                );
+              }
+              else {
+                showToast(
+                    text: text,
+                    state: ToastStates.SUCCESS
+                );
 
-            }
-        },
-        onLoading:() async {
-          await Future.delayed(Duration(microseconds: 500));
-          _refreshController.refreshFailed();
-        },
-        enablePullUp: true,
-        controller: _refreshController,
-      ),
-        drawer: Container(
+              }
+            },
+            onLoading:() async {
+              await Future.delayed(Duration(microseconds: 500));
+              _refreshController.refreshFailed();
+            },
+            enablePullUp: true,
+            controller: _refreshController,
+          ),
+/*drawer: Container(
           color: Colors.white,
           child: Drawer(
             child: ListView(
@@ -240,23 +368,25 @@ StreamSubscription _streamSubscription;
               ],
             ),
           ),
+        ),*/
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: (index) {
+              cubit.changeBottom(index);
+            },
+            currentIndex: cubit.currentIndex,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.apps_outlined),
+                label: 'Parking',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_outlined),
+                label: 'Home',
+              ),
+            ],
+          ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: (index) {
-            cubit.changeBottom(index);
-          },
-          currentIndex: cubit.currentIndex,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.apps_outlined),
-              label: 'Parking',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-            ),
-          ],
-        ),
+
       );
     });
   }
