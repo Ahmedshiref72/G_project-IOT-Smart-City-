@@ -7,11 +7,12 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://smart-city-9.herokuapp.com/api/users/',
+        baseUrl: 'https://smart-city-9.herokuapp.com/api/',
         receiveDataWhenStatusError: true,
       ),
     );
   }
+
 
   static Future<Response> getData({
     @required String url,

@@ -8,20 +8,16 @@ class ParkingScreen extends StatelessWidget {
   var newController = TextEditingController();
   final List<String> cites = <String>[
     'Cairo',
-    'Cardiff',
-    'Dierb Negm',
-    'El3slogy',
-    'Ela7asania',
+    'Alexandria',
+    'Sharqia',
     'Giza',
-    'Hamburg',
-    'Kafr Saqr',
-    'London',
-    'Lisbon',
-    'Madrid',
-    'Manchester',
-    'Munich',
-    'Milan',
-    'Paris',
+    'Aswan',
+    'Gharbia',
+    'Suez',
+    'Dakahlia',
+    'Ismailia',
+    'Faiyum',
+
   ];
 
 

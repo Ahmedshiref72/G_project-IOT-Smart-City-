@@ -96,7 +96,7 @@ Widget buildChatItem(BuildContext context,index,) =>
                       children: [
 
                         Text(
-                          'Number Of slots : 10',
+                          'Number Of slots : 8',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -114,13 +114,11 @@ Widget buildChatItem(BuildContext context,index,) =>
                               width: 12,
                             ),
                             Text(
-                                'Available : 3'
+                                'Available : 6'
                             ),
                             SizedBox(
                               width: 12,
                             ),
-
-
                           ],
                         ),
                       ],

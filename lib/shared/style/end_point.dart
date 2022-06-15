@@ -1,21 +1,22 @@
-import 'package:smart_city/models/login_model.dart';
-import 'package:smart_city/shared/components/constants.dart';
+const LOGIN ='users/login';
 
-const LOGIN ='login';
+const SendOTP ='users/send-otp';
 
-const SendOTP ='send-otp';
+const VerifyEmail= 'users/verify-email';
 
-const VerifyEmail= 'verify-email';
+const PROFILE='users/profile';
 
-const PROFILE='profile';
+const REGISTER='users/register';
 
-const REGISTER='register';
+const UPDATE_PROFILE='users/update-profile';
 
-const UPDATE_PROFILE='update-profile';
+const Verify_Pass='users/verify-pass-otp';
 
-const Verify_Pass='verify-pass-otp';
+const Password_Reset= 'users/password-reset';
 
-const Password_Reset= 'password-reset';
+const parking_slots = 'parking/slots';
+
+const temp ='home/temp';
 
 
 
