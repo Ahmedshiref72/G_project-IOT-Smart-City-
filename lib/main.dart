@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:overlay_support/overlay_support.dart';
@@ -19,10 +20,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_city/shared/network/dio_helper.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
-import 'package:ndialog/ndialog.dart';
 
 
-void main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Bloc.observer = MyBlocObserver();
@@ -50,6 +50,8 @@ void main() async {
   } else {
     widget = OnBoardingScreen();
   }
+WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
   runApp(MyApp(
     isDark: isDark,
@@ -120,9 +122,9 @@ class _MyAppState extends State<MyApp> {
     );
 
   }
-  _connect(){}
+  connect(){}
 
-  _disconnect(){}
+  disconnect(){}
 
 
   Future<bool> mqttConnect(String uniqueId) async{

@@ -1,4 +1,7 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:smart_city/modules/home/cubit/cubit.dart';
@@ -12,6 +15,9 @@ class Kitchen extends StatelessWidget {
   Widget build(BuildContext context) {
     double temperature = 7;
     Size size = MediaQuery.of(context).size;
+    RefreshController _refreshController = RefreshController();
+    bool _hasInternet = false;
+    ConnectivityResult result = ConnectivityResult.none;
     return BlocConsumer<HomeCubit,HomeStates>(
       listener: (context,state){},
       builder: (context,state){
@@ -19,7 +25,26 @@ class Kitchen extends StatelessWidget {
           appBar: AppBar(
             title:Text('Kitchen') ,
           ),
-          body: Column(children: [
+          body: SmartRefresher(
+          onRefresh: () async {
+          await Future.delayed(Duration(microseconds: 500));
+          _refreshController.refreshFailed();
+          _hasInternet = await InternetConnectionChecker().hasConnection;
+          final color = _hasInternet ? Colors.green : Colors.red;
+
+          result = await Connectivity().checkConnectivity();
+
+          if (_hasInternet) {
+          HomeCubit.get(context).getHomeData();
+          }
+          },
+          onLoading: () async {
+          await Future.delayed(Duration(microseconds: 500));
+          _refreshController.refreshFailed();
+          },
+          //  enablePullUp: true,
+          controller: _refreshController,
+          child:Column(children: [
             SizedBox(height: 20),
             Text(
               'Today',
@@ -120,7 +145,7 @@ class Kitchen extends StatelessWidget {
               ),
             ),
           ]),
-        );
+        ));
       },
     );
   }
