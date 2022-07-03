@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "977830405645",
+    "project_id": "smartcity-36b9f",
+    "storage_bucket": "smartcity-36b9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977830405645:android:54a80b91e2800924b31744",
+        "android_client_info": {
+          "package_name": "com.example.smart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977830405645-ase2ek07riv1ljqnfme1r36f5021rg8q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smart",
+            "certificate_hash": "0675eef5a60078eab3c8aec00bce6e88f8b26606"
+          }
+        },
+        {
+          "client_id": "977830405645-hqq07gdkssiov6gtv3a5at5hvn6sbnnf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ9KreDrqAxSkXBvyVauELemFR4jxQDHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977830405645-hqq07gdkssiov6gtv3a5at5hvn6sbnnf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
