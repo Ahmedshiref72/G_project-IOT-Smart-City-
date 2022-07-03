@@ -1,25 +1,24 @@
 class HomeModel {
   bool status;
   String message;
-  HomeData data;
+  Data data;
 
   HomeModel({this.status, this.message, this.data});
 
   HomeModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? new HomeData.fromJson(json['data']) : null;
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
   }
-
 }
 
-class HomeData {
-  String temp;
+class Data {
+  List<int> degrees;
 
-  HomeData({this.temp});
+  Data({this.degrees});
 
-  HomeData.fromJson(Map<String, dynamic> json) {
-    temp = json['temp'];
+  Data.fromJson(Map<String, dynamic> json) {
+    degrees = json['degrees'].cast<int>();
   }
 
 }

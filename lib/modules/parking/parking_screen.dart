@@ -142,7 +142,7 @@ Widget buildChatItem(
                   topRight: Radius.circular(50),
                   bottomLeft: Radius.circular(10),
                 )),
-            color: Colors.blueGrey[300],
+            color: Colors.purple,
             child: Padding(
               padding: const EdgeInsets.only(top: 12,left: 10,bottom: 12),
               child: Container(
@@ -169,7 +169,7 @@ Widget buildChatItem(
                             children: [
                               Expanded(
                                 child: Text(
-                                  '${city}',
+                                  '$city',
                                   style: TextStyle(
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.bold),

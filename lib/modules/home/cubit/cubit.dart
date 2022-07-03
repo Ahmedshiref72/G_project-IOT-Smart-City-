@@ -14,19 +14,19 @@ class HomeCubit extends Cubit<HomeStates> {
 
   HomeModel homeModel;
 
-  void getHomeData() {
+    Future getHomeData() async{
     emit(ParkingLoadingHomeState());
 
-    DioHelper.getData(
-      url: temp,
+   await DioHelper.getData(
+      url: degrees,
       token: token,
 
-    ).then((value) {
+    ).then((value){
       homeModel = HomeModel.fromJson(value.data);
-      emit(ParkingSuccessHomeState(homeModel));
+     emit(ParkingSuccessHomeState(homeModel));
     }).catchError((error) {
       print(error.toString());
-      emit(ParkingErrorHomeState(error.toString()));
+       emit(ParkingErrorHomeState(error.toString()));
     });
   }
 

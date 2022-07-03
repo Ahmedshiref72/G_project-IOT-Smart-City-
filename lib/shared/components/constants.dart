@@ -33,10 +33,15 @@ String carStr='';
 String carInt='';
 String oldPassword='';
 String newPassword='';
+
 var slots1;
 var slots2;
 var slots3;
 var slots4;
 var slots5;
 var slots6;
+var temp;
+var gas;
+var hum;
+var rain;
 

@@ -268,6 +268,7 @@ StreamSubscription _streamSubscription;
                 icon: Icon(Icons.apps_outlined),
                 label: 'Parking',
               ),
+
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_outlined),
                 label: 'Home',
