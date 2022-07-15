@@ -6,14 +6,14 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:smart_city/modules/home/cubit/cubit.dart';
 import 'package:smart_city/modules/home/cubit/states.dart';
-import 'package:smart_city/modules/home/custom_card.dart';
 import 'package:smart_city/modules/home/screens/Garage.dart';
 import 'package:smart_city/modules/home/screens/bathroom.dart';
 import 'package:smart_city/modules/home/screens/bedroom.dart';
-import 'package:smart_city/modules/home/screens/home_card.dart';
 import 'package:smart_city/modules/home/screens/kitchen.dart';
 import 'package:smart_city/modules/home/screens/livingroom.dart';
 import 'package:smart_city/modules/home/screens/roof.dart';
+import 'package:smart_city/modules/password/gatePassword.dart';
+import 'package:smart_city/modules/verify/verify_email.dart';
 import 'package:smart_city/shared/components/components.dart';
 import 'package:smart_city/shared/components/constants.dart';
 
@@ -310,73 +310,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                     ),
-
-                    /*InkWell(
-                      child: SingleChildScrollView(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: kBgColor,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black45,
-                                blurRadius: 8,
-                                offset: Offset(3, 3),
-                              ),
-                              BoxShadow(
-                                color: Colors.white,
-                                blurRadius: 0,
-                                offset: Offset(-3, -3),
-                              ),
-                            ],
-                          ),
-                          padding: const EdgeInsets.all(8),
-                          child: Column(
-                            children: [
-                              Text(
-                                'Living Room',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Image(image: AssetImage('assets/images/Webp.net-resizeimage (1).png'))
-                            ],
-                          ),
-                        ),
-                      ),
-                      onTap: (){
-                        navigateTo(context, LivingRoom());
-                      },
-                    ),
                     SingleChildScrollView(
                       child: InkWell(
-                        child: Container(
-                          decoration:  BoxDecoration(
-                            color: kBgColor,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black45,
-                                blurRadius: 8,
-                                offset: Offset(3, 3),
-                              ),
-                              BoxShadow(
-                                color: Colors.white,
-                                blurRadius: 0,
-                                offset: Offset(-3, -3),
-                              ),
-                            ],
-                          ),
-                          padding: const EdgeInsets.all(8),
+
+                        child: Card(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft:Radius.circular(20),bottomRight:Radius.circular(20) )),
+                          elevation: 40,
+                          shadowColor: Colors.black,
+
+
                           child: Column(
                             children: [
+                              SizedBox(
+                                height: 5,
+                              ),
                               Text(
-                                'Kitchen',
+                                'Gate',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -384,150 +333,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               SizedBox(
-                                height: 20,
+                                height: 5,
                               ),
-                              Image(image: AssetImage('assets/images/kitchen.png'))
-                            ],
-                          ),
-                        ),
-                        onTap: (){
-                          navigateTo(context, Kitchen());
-                        },
-                      ),
-                    ),
-                    SingleChildScrollView(
-                      child: InkWell(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: kBgColor,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black45,
-                                blurRadius: 8,
-                                offset: Offset(3, 3),
-                              ),
-                              BoxShadow(
-                                color: Colors.white,
-                                blurRadius: 0,
-                                offset: Offset(-3, -3),
-                              ),
-                            ],
-                          ),
-                          padding: const EdgeInsets.all(8),
-                          child: Column(
-                            children: [
-                              Text(
-                                'Bathroom',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                             // Image(image: AssetImage('assets/images/roof3.png')),+
+                              Icon(Icons.door_sliding_outlined,size: 95,color: Colors.black,),
                               SizedBox(
                                 height: 20,
                               ),
-                              Image(image: AssetImage('assets/images/bathroom.png'))
                             ],
                           ),
+
                         ),
                         onTap: (){
-                          navigateTo(context, BathRoom());
+                         navigateTo(context, GatePassword());
                         },
                       ),
                     ),
-                    SingleChildScrollView(
-                      child: InkWell(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: kBgColor,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black45,
-                                blurRadius: 8,
-                                offset: Offset(3, 3),
-                              ),
-                              BoxShadow(
-                                color: Colors.white,
-                                blurRadius: 0,
-                                offset: Offset(-3, -3),
-                              ),
-                            ],
-                          ),
-                          padding: const EdgeInsets.all(8),
-                          child: Column(
-                            children: [
-                              Text(
-                                'Bed Room',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Image(image: AssetImage('assets/images/Webp.net-resizeimage.png'))
-                            ],
-                          ),
-                        ),
-                        onTap: (){
-                          navigateTo(context, BedRoom());
-                        },
-                      ),
-                    ),
-                    SingleChildScrollView(
-                      primary: true,
-                      child: InkWell(
-
-
-                        child: Container(
-
-                          decoration: BoxDecoration(
-                            color: kBgColor,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black45,
-                                blurRadius: 8,
-                                offset: Offset(3, 3),
-                              ),
-                              BoxShadow(
-                                color: Colors.white,
-                                blurRadius: 0,
-                                offset: Offset(-3, -3),
-                              ),
-                            ],
-                          ),
-                          padding: const EdgeInsets.all(8),
-                          child: Center(
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Roof',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Image(image: AssetImage('assets/images/stairs.png'),)
-                              ],
-                            ),
-                          ),
-
-                        ),
-                        onTap: (){
-                          navigateTo(context, Roof());
-                        },
-                      ),
-                    ),*/
                   ],
                 )),
           ),

@@ -117,8 +117,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
                   bottomRight: Radius.circular(35)),
               child:
               Drawer(
+
                 child: Container(
-                  color: Colors.blue,
+                  color: ParkingCubit.get(context).drawerColor,
                   child: ListView(
 
                     children: [

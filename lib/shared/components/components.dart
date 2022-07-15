@@ -1,13 +1,7 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:smart_city/layout/cubit/cubit.dart';
 import 'package:smart_city/shared/style/icon_broken.dart';
-
-import '../cubit/cubit.dart';
 import 'constants.dart';
 
 
@@ -152,7 +146,6 @@ Widget defaultFormField({
 
   context}) =>
     TextFormField(
-
       autofillHints: autofill,
       enableInteractiveSelection: true,
       inputFormatters: format,
@@ -165,9 +158,11 @@ Widget defaultFormField({
       onChanged: onChange,
       onFieldSubmitted: onSubmit,
       decoration: InputDecoration(
+
         labelText: label,
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25.0)
+            borderRadius: BorderRadius.circular(25.0),
+
         ),
         suffixIcon: suffix != null
             ? IconButton(

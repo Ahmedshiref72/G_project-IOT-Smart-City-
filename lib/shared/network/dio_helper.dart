@@ -12,8 +12,6 @@ class DioHelper {
       ),
     );
   }
-
-
   static Future<Response> getData({
     @required String url,
     Map<String, dynamic> query,
@@ -53,8 +51,7 @@ class DioHelper {
     @required Map<String, dynamic> data,
     Map<String, dynamic> query,
     String token ,
-  }) async
-  {
+  }) async {
     dio.options.headers ={
       'Authorization':token?? '',
       'Content-Type' :'application/json',

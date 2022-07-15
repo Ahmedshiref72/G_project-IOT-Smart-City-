@@ -6,8 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:smart_city/modules/login/parking_login_screen.dart';
-import 'package:smart_city/modules/register/cubit/cubit.dart';
-import 'package:smart_city/modules/register/cubit/states.dart';
 import 'package:smart_city/modules/verify/cubit/states.dart';
 import 'package:smart_city/modules/verify/cubit/verify_cubit.dart';
 import 'package:smart_city/shared/components/components.dart';

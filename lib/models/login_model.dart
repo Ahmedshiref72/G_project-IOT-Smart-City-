@@ -1,22 +1,14 @@
-
-import 'package:flutter/cupertino.dart';
-
 class ParkingLoginModel
 {
   bool status;
   String message;
   UserData data;
-
   ParkingLoginModel.fromJson(Map<String,dynamic> json)
   {
     status =json['status'];
     message =json['message'];
     data =json['data'] !=null? UserData.fromJson(json['data']): null;
-
-
-  }
-
-}
+  }}
 class UserData
 {
   String uid;
@@ -27,13 +19,8 @@ class UserData
   String phone;
   String carStr;
   String carInt;
-
-
-
-
   UserData.fromJson(Map<String,dynamic> json)
   {
-
     uid =json['_id'];
     username =json['username'];
     email =json['email'];
@@ -42,9 +29,4 @@ class UserData
     token =json['token'];
     carStr=json['carStr'];
     carInt=json['carInt'];
-
-
-
-
-  }
-}
+  }}

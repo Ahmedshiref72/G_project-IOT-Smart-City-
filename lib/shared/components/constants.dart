@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_city/modules/login/parking_login_screen.dart';
 import 'package:smart_city/shared/components/components.dart';
 import 'package:smart_city/shared/network/cache_helper.dart';
-
 import 'dart:ui';
-
 const Color kBgColor = Color(0xFFecf5fb);
 const Color kOrangeColor = Color(0xFFF07662);
 const Color kDarkGreyColor = Color.fromARGB(255, 59, 78, 90);
@@ -24,14 +22,10 @@ void signOut(context) {
     }
   });
 }
-
-
-
 void printFullText(String text) {
   final pattern = RegExp('.{1,800}');
   pattern.allMatches(text).forEach((match) => print(match.group(0)));
 }
-
 String token = '';
 var uid = '';
 String username='';
@@ -45,13 +39,13 @@ List leds;
 Color color=Colors.white;
 
 final String oneSignalId= "c6218e1e-82ad-420b-bcad-3d626af97d6d";
-
 var slots1;
 var slots2;
 var slots3;
 var slots4;
 var slots5;
 var slots6;
+var freeSlots;
 var temp;
 var gas;
 var hum;
@@ -62,5 +56,3 @@ var led_3;
 var led_4;
 var led_5;
 var led_6;
-
-

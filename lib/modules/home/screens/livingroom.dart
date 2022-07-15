@@ -8,13 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_city/models/light_model.dart';
 import 'package:smart_city/modules/home/cubit/cubit.dart';
 import 'package:smart_city/modules/home/cubit/states.dart';
-import 'package:smart_city/modules/home/custom_card.dart';
 import 'package:smart_city/modules/home/weather/extraWeather.dart';
 import 'package:smart_city/shared/components/components.dart';
 import 'package:smart_city/shared/components/constants.dart';
 import 'package:intl/intl.dart';
-import 'package:smart_city/shared/components/constants.dart';
-import 'package:smart_city/shared/cubit/cubit.dart';
 
 class LivingRoom extends StatefulWidget {
   @override
@@ -35,12 +32,9 @@ class _LivingRoomState extends State<LivingRoom> {
 
   @override
   Widget build(BuildContext context) {
-    double temperature = 7;
-    Size size = MediaQuery.of(context).size;
     RefreshController _refreshController = RefreshController();
     bool _hasInternet = false;
     ConnectivityResult result = ConnectivityResult.none;
-    var lightController = TextEditingController();
     bool lighted = false;
 
 

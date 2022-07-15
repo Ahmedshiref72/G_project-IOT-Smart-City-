@@ -77,7 +77,9 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           SizedBox(height: 15,),
                           Text(nameController.text,
+
                             style: TextStyle(
+                              color: ParkingCubit.get(context).color,
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
 

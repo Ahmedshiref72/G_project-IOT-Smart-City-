@@ -99,7 +99,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 8.0),
                       child: Text(
-                        'Rest Password ',
+                        'Reset Password ',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 22),
                         textAlign: TextAlign.center,

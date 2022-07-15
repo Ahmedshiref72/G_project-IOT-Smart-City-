@@ -12,7 +12,6 @@ ThemeData darkTheme =ThemeData(
 
 
   cardColor: Colors.grey,
- //drawerTheme: DrawerThemeData(backgroundColor:HexColor('333739') ),
 
 
   scaffoldBackgroundColor: HexColor('333739'),

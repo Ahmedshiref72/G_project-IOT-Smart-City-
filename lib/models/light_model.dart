@@ -2,7 +2,6 @@ class LightModel {
   bool status;
   String message;
   Data data;
-
   LightModel({this.status, this.message, this.data});
 
   LightModel.fromJson(Map<String, dynamic> json) {
@@ -10,7 +9,6 @@ class LightModel {
     message = json['message'];
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
   }
-
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['status'] = this.status;
@@ -18,10 +16,7 @@ class LightModel {
     if (this.data != null) {
       data['data'] = this.data.toJson();
     }
-    return data;
-  }
-}
-
+    return data;}}
 class Data {
   int led1;
   int led2;
@@ -29,9 +24,7 @@ class Data {
   int led4;
   int led5;
   int led6;
-
   Data({this.led1, this.led2, this.led3, this.led4});
-
   Data.fromJson(Map<String, dynamic> json) {
     led1 = json['led1'];
     led2 = json['led2'];
@@ -40,7 +33,6 @@ class Data {
     led5 = json['led5'];
     led6 = json['led6'];
   }
-
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['led1'] = this.led1;
