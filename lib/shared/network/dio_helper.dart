@@ -7,7 +7,7 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://smart-city-9.herokuapp.com/api/',
+        baseUrl: 'http://smart-city.eastus2.cloudapp.azure.com:5000/api/',
         receiveDataWhenStatusError: true,
       ),
     );
