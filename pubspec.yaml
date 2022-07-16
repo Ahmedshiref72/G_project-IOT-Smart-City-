@@ -67,6 +67,10 @@ dependencies:
   flutter_glow: ^0.2.0
   weather_icons:
   flutter_staggered_grid_view: ^0.3.0
+  url_launcher:
+  linkify:
+  flutter_linkify:
+  linkify_text:
 
 
   # The following adds the Cupertino Icons font to your application.
