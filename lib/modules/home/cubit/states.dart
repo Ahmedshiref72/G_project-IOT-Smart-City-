@@ -1,5 +1,7 @@
 import 'package:smart_city/models/home_model.dart';
 import 'package:smart_city/models/light_model.dart';
+import 'package:smart_city/models/passModel.dart';
+
 
 abstract class HomeStates {}
 class HomeInitialState extends HomeStates{}
@@ -45,6 +47,20 @@ class HomePostErrorLightsState extends HomeStates {
   final String error;
 
   HomePostErrorLightsState(this.error);
+
+}
+class HomePostLoadingPassState extends HomeStates{}
+
+class HomePostSuccessPassState extends HomeStates{
+  final PassModel passModel;
+
+  HomePostSuccessPassState(this.passModel);
+}
+
+class HomePostErrorPassState extends HomeStates {
+  final String error;
+
+  HomePostErrorPassState(this.error);
 
 }
 

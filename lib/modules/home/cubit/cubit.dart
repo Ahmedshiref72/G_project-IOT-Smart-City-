@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_city/models/home_model.dart';
 import 'package:smart_city/models/light_model.dart';
+import 'package:smart_city/models/passModel.dart';
 import 'package:smart_city/modules/home/cubit/states.dart';
 import 'package:smart_city/shared/components/constants.dart';
 import 'package:smart_city/shared/network/cache_helper.dart';
@@ -10,8 +11,13 @@ import 'package:smart_city/shared/style/end_point.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
   HomeCubit() : super((HomeInitialState()));
+
+
   static HomeCubit get(context) => BlocProvider.of(context);
+
+
   bool isDark = false;
+
   void changeAppMode({bool fromShared}) {
     if (fromShared != null) {
       isDark = fromShared;
@@ -23,7 +29,10 @@ class HomeCubit extends Cubit<HomeStates> {
       });
     }
   }
+
   HomeModel homeModel;
+
+
   Future getHomeData() async {
     emit(ParkingLoadingHomeState());
 
@@ -78,6 +87,8 @@ class HomeCubit extends Cubit<HomeStates> {
     int led4,
     int led5,
     int led6,
+
+
   }) async
 
   {
@@ -113,6 +124,7 @@ class HomeCubit extends Cubit<HomeStates> {
   bool isLighted5 = false;
   bool isLighted6 = false;
 
+
   Icon icon1 = Icon(Icons.flashlight_off_outlined, size: 60,);
   Icon icon2 = Icon(Icons.flashlight_off_outlined, size: 60,);
   Icon icon3= Icon(Icons.flashlight_off_outlined, size: 60,);
@@ -141,6 +153,7 @@ class HomeCubit extends Cubit<HomeStates> {
 
     emit(AppChangeLight1State());
   }
+
   void lightSwitch2() {
     if (isLighted2) {
       icon2 = Icon(
@@ -161,6 +174,7 @@ class HomeCubit extends Cubit<HomeStates> {
 
     emit(AppChangeLight2State());
   }
+
   void lightSwitch3() {
     if (isLighted3) {
       icon3 = Icon(
@@ -181,6 +195,7 @@ class HomeCubit extends Cubit<HomeStates> {
 
     emit(AppChangeLight3State());
   }
+
   void lightSwitch4() {
     if (isLighted4) {
       icon4 = Icon(
@@ -201,6 +216,7 @@ class HomeCubit extends Cubit<HomeStates> {
 
     emit(AppChangeLight4State());
   }
+
   void lightSwitch5() {
     if (isLighted5) {
       icon5 = Icon(
@@ -221,6 +237,7 @@ class HomeCubit extends Cubit<HomeStates> {
 
     emit(AppChangeLight5State());
   }
+
   void lightSwitch6() {
     if (isLighted6) {
       icon6 = Icon(
@@ -240,5 +257,37 @@ class HomeCubit extends Cubit<HomeStates> {
 
 
     emit(AppChangeLight6State());
+  }
+
+  PassModel passModel;
+
+
+  Future postPassData({
+    String pass,
+
+
+
+  }) async
+
+  {
+    emit(HomePostLoadingPassState());
+
+
+    await DioHelper.postData(
+      url: password,
+      token: token,
+      data: {
+        'password': pass,
+
+      },
+    ).then((value) {
+      passModel = PassModel.fromJson(value.data);
+
+
+      emit(HomePostSuccessPassState(passModel));
+    }).catchError((error) {
+      print(error.toString());
+      emit(HomePostErrorPassState(error.toString()));
+    });
   }
 }
