@@ -1,6 +1,6 @@
-# IoT Smart City
+# D-Task
 
-> IoT smart city graduation project
+
 
 ## Download App
 <a href="https://github.com/abdelrazekAli/IoT-Smart-City/releases/download/v0.1.0/smart_city.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
